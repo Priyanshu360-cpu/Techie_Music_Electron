@@ -22,6 +22,11 @@
     "erela.js": "^2.3.3",
     "erela.js-deezer": "^1.0.7",
     "erela.js-facebook": "^1.0.4",
-    "erela.js-spotify": "^1.2.0"
+    "erela.js-spotify": "^1.2.0",
+    "ffmpeg": "^0.0.4",
+    "fs": "^0.0.1-security",
+    "youtube-audio-server": "^2.8.2",
+    "youtube-mp3-converter": "^1.0.3",
+    "youtube.ts": "^0.2.5"
   }
 }
