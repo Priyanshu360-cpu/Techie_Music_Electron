@@ -17,6 +17,7 @@
     "electron": "^16.0.5"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "axios": "^0.24.0",
     "cordy": "^1.0.5",
     "erela.js": "^2.3.3",
@@ -24,6 +25,7 @@
     "erela.js-facebook": "^1.0.4",
     "erela.js-spotify": "^1.2.0",
     "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
     "youtube-audio-server": "^2.8.2",
     "youtube-mp3-converter": "^1.0.3",
