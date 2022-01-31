@@ -6,7 +6,6 @@
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -14,9 +13,11 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^16.0.5"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cordy": "^1.0.5"
   }
 }
