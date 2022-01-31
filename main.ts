@@ -1,6 +1,7 @@
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
+const sound = require("sound-play");
 require("./index");
 const { app, BrowserWindow, ipcMain, nativeTheme, webContents} = require('electron')
 const path = require('path')
@@ -36,20 +37,22 @@ function createWindow () {
 }
 
 app.whenReady().then(async () => {
-  createWindow()
-  const id = 'r3DvorMWkzE' // "Whole Lotta Love" by Led Zeppelin.
+  
+  const id = 'aEb5gNsmGJ8' // "Whole Lotta Love" by Led Zeppelin.
   const file = 'whole-lotta-love.mp3'
   console.log(`Downloading ${id} into ${file}...`)
   yas.downloader
     .setFolder('some/folder') // Optionally set a folder for downloaded content.
     .onSuccess(({id, file}) => {
+      sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\youtube-audio.mp3");
       console.log(`Yay! Audio (${id}) downloaded successfully into "${file}"!`)
     })
     .onError(({ id, file, error }) => {
       console.error(`Sorry, an error ocurred when trying to download ${id}`, error)
     })
     .download({ id, file})
-
+    createWindow()
+    
   const contents = webContents.getAllWebContents()[0]
 
  
