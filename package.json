@@ -27,6 +27,7 @@
     "ffmpeg": "^0.0.4",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
+    "sound-play": "^1.1.0",
     "youtube-audio-server": "^2.8.2",
     "youtube-mp3-converter": "^1.0.3",
     "youtube.ts": "^0.2.5"
