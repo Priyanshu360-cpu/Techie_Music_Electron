@@ -1,4 +1,6 @@
-
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
 require("./index");
 const { app, BrowserWindow, ipcMain, nativeTheme, webContents} = require('electron')
 const path = require('path')
@@ -71,7 +73,7 @@ trip.manage=new Manager({
 
 app.whenReady().then(async () => {
   createWindow()
-  const id = 'HQmmM_qwG4k' // "Whole Lotta Love" by Led Zeppelin.
+  const id = 'r3DvorMWkzE' // "Whole Lotta Love" by Led Zeppelin.
   const file = 'whole-lotta-love.mp3'
   console.log(`Downloading ${id} into ${file}...`)
   yas.downloader
@@ -100,7 +102,7 @@ app.whenReady().then(async () => {
 })
 
 app.on('window-all-closed', () => {
-  
+
   if (process.platform !== 'darwin') {
     app.quit()
   }
