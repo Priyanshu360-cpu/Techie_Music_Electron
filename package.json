@@ -2,7 +2,7 @@
   "name": "electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "main.ts",
   "scripts": {
     "start": "electron ."
   },
@@ -18,6 +18,10 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "cordy": "^1.0.5"
+    "cordy": "^1.0.5",
+    "erela.js": "^2.3.3",
+    "erela.js-deezer": "^1.0.7",
+    "erela.js-facebook": "^1.0.4",
+    "erela.js-spotify": "^1.2.0"
   }
 }
