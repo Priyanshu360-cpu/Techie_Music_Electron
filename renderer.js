@@ -4,6 +4,7 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
 document.getElementById('toggle-dark-mode').addEventListener('click', async () => {
     const isDarkMode = await window.darkMode.toggle()
     document.getElementById('theme-source').innerHTML = isDarkMode ? 'Dark' : 'Light'
@@ -17,3 +18,6 @@ webview.addEventListener('dom-ready', () => {
     await window.darkMode.system()
     document.getElementById('theme-source').innerHTML = 'System'
   })
+  document.getElementById('subo').addEventListener('click', async () => {
+    let d = document.getElementById('test').value;
+    document.getElementById('result').value=d  })
