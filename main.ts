@@ -37,8 +37,9 @@ function createWindow () {
 }
 
 app.whenReady().then(async () => {
-  
-  const id = 'aEb5gNsmGJ8' // "Whole Lotta Love" by Led Zeppelin.
+  createWindow()
+  sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\techiehi.mp3");
+  const id = 'RJNrC-qHJNc' // "Whole Lotta Love" by Led Zeppelin.
   const file = 'whole-lotta-love.mp3'
   console.log(`Downloading ${id} into ${file}...`)
   yas.downloader
@@ -51,8 +52,7 @@ app.whenReady().then(async () => {
       console.error(`Sorry, an error ocurred when trying to download ${id}`, error)
     })
     .download({ id, file})
-    createWindow()
-    
+   
   const contents = webContents.getAllWebContents()[0]
 
  
@@ -66,7 +66,7 @@ app.whenReady().then(async () => {
 
 app.on('window-all-closed', () => {
   const fs = require('fs')
-  const dir = './some/folder';
+  const dir = 'C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some';
   fs.rm(dir, { recursive: true }, (err) => {
     if (err) {
         throw err;
