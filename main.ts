@@ -41,11 +41,11 @@ ipcMain.handle('download', (x) => {
 app.whenReady().then(async () => {
   createWindow()
   sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\techiehi.mp3");
-  const id = 'RJNrC-qHJNc' // "Whole Lotta Love" by Led Zeppelin.
+  const id = 'RJNrC-qHJNc'
   const file = 'whole-lotta-love.mp3'
   console.log(`Downloading ${id} into ${file}...`)
   yas.downloader
-    .setFolder('some/folder') // Optionally set a folder for downloaded content.
+    .setFolder('some/folder') 
     .onSuccess(({id, file}) => {
       sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\youtube-audio.mp3");
       console.log(`Yay! Audio (${id}) downloaded successfully into "${file}"!`)
