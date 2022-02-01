@@ -35,7 +35,9 @@ function createWindow () {
     nativeTheme.themeSource = 'system'
   })
 }
-
+ipcMain.handle('download', (x) => {
+ console.log(x);
+})
 app.whenReady().then(async () => {
   createWindow()
   sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\techiehi.mp3");
@@ -52,7 +54,6 @@ app.whenReady().then(async () => {
       console.error(`Sorry, an error ocurred when trying to download ${id}`, error)
     })
     .download({ id, file})
-   
   const contents = webContents.getAllWebContents()[0]
 
  
