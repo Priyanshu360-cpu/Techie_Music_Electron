@@ -19,5 +19,8 @@ webview.addEventListener('dom-ready', () => {
     document.getElementById('theme-source').innerHTML = 'System'
   })
   document.getElementById('subo').addEventListener('click', async () => {
+   
     let d = document.getElementById('test').value;
-    document.getElementById('result').value=d  })
+    document.getElementById('result').value=d 
+    await window.darkMode.download(d) })
+    
