@@ -65,7 +65,7 @@ app.on('window-all-closed', () => {
   const dir = 'C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\youtube-audio.mp3';
   try {
     fs.unlinkSync(dir);
-    console.log("File removed:");
+    
   } catch (err) {
     console.error(err);
   }
