@@ -7,7 +7,9 @@ const url = require('url');
 
 const rpc = new DiscordRPC.Client({ transport: 'ipc' });
 const startTimestamp = new Date();
-
+function test(){
+  console.log("hi");
+}
 async function setActivity() {
  
   rpc.setActivity({
@@ -32,3 +34,4 @@ rpc.on('ready', () => {
 });
 
 rpc.login({ clientId }).catch(console.error);
+module.exports.test=test();

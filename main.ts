@@ -2,7 +2,7 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
 const sound = require("sound-play");
-require("./discord_presence");
+const a = require("./discord_presence");
 const { app, BrowserWindow, ipcMain, nativeTheme, webContents} = require('electron')
 const path = require('path')
 const yas = require('youtube-audio-server')
@@ -53,8 +53,10 @@ app.whenReady().then(async () => {
   
   const contents = webContents.getAllWebContents()[0]
   app.on('activate', () => {
+    a.test;
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
+    
     }
   })
   
