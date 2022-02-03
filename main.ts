@@ -39,7 +39,7 @@ ipcMain.handle('download', (event,x) => {
   yas.downloader
     .setFolder('some/folder') 
     .onSuccess(({id, file}) => {
-      sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\youtube-audio.mp3");
+      sound.play(path.join(__dirname, './some/folder/youtube-audio.mp3'));
       console.log(`Yay! Audio (${id}) downloaded successfully into "${file}"!`)
     })
     .onError(({ id, file, error }) => {
@@ -49,11 +49,13 @@ ipcMain.handle('download', (event,x) => {
 })
 app.whenReady().then(async () => {
   createWindow()
-  sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\techiehi.mp3");
+  sound.play(path.join(__dirname, './some/folder/techiehi.mp3'));
   
   const contents = webContents.getAllWebContents()[0]
   app.on('activate', () => {
-    a.test;
+    
+    console.log(path.join(__dirname, './images/background.jpg'))
+    
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
     
@@ -64,7 +66,7 @@ app.whenReady().then(async () => {
 
 app.on('window-all-closed', () => {
   const fs = require('fs')
-  const dir = 'C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\youtube-audio.mp3';
+  const dir = path.join(__dirname, './some/folder/youtube-audio.mp3');
   try {
     fs.unlinkSync(dir);
     
