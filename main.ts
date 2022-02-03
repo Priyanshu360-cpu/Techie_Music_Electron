@@ -12,6 +12,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, './images/snek_large.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
