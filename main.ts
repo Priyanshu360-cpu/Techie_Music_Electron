@@ -35,13 +35,8 @@ function createWindow () {
     nativeTheme.themeSource = 'system'
   })
 }
-ipcMain.handle('download', (x) => {
- console.log(x);
-})
-app.whenReady().then(async () => {
-  createWindow()
-  sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\techiehi.mp3");
-  const id = 'RJNrC-qHJNc'
+ipcMain.handle('download', (event,x) => {
+  const id = x
   const file = 'whole-lotta-love.mp3'
   console.log(`Downloading ${id} into ${file}...`)
   yas.downloader
@@ -54,9 +49,12 @@ app.whenReady().then(async () => {
       console.error(`Sorry, an error ocurred when trying to download ${id}`, error)
     })
     .download({ id, file})
+})
+app.whenReady().then(async () => {
+  createWindow()
+  sound.play("C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\techiehi.mp3");
+  
   const contents = webContents.getAllWebContents()[0]
-
- 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
