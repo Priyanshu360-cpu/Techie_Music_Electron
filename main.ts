@@ -5,12 +5,9 @@ const sound = require("sound-play");
 require("./index");
 const { app, BrowserWindow, ipcMain, nativeTheme, webContents} = require('electron')
 const path = require('path')
-const Spotify = require("erela.js-spotify");
-const Deezer = require("erela.js-deezer");
-const FaceBook = require("erela.js-facebook");
 const yas = require('youtube-audio-server')
 const axios = require("axios")
-const { Manager } = require("erela.js");
+
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
@@ -65,14 +62,13 @@ app.whenReady().then(async () => {
 
 app.on('window-all-closed', () => {
   const fs = require('fs')
-  const dir = 'C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some';
-  fs.rm(dir, { recursive: true }, (err) => {
-    if (err) {
-        throw err;
-    }
-
-    console.log(`${dir} is deleted!`);
-});
+  const dir = 'C:\\Users\\KIIT\\Desktop\\Techie_Music_Electron\\some\\folder\\youtube-audio.mp3';
+  try {
+    fs.unlinkSync(dir);
+    console.log("File removed:");
+  } catch (err) {
+    console.error(err);
+  }
   if (process.platform !== 'darwin') {
     app.quit()
   }
