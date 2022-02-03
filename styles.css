@@ -1,15 +1,19 @@
 /* styles.css */
 
 /* Add styles here to customize the appearance of your app */
+.themes{
+  position:absolute;
+  height: 40vmin;
+  top:50%;
+  z-index:32;
+  color: #ff0000;
+  background: #ddd
+    }
 @media (prefers-color-scheme: dark) {
-    body { background: #333; color: white; }
+    body { background: #ddd; color: black; }
   }
   
   @media (prefers-color-scheme: light) {
-    body { background: #ddd; color: black; }
+    body { background: #333; color: white; }
   }
-  .Themes{
-position:absolute;
-height: 40vmin;
-top:50%
-  }
+  
