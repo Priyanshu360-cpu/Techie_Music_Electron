@@ -2,7 +2,7 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
 const sound = require("sound-play");
-require("./discord_presence");
+require("./discord_activity");
 const { app, BrowserWindow, ipcMain, nativeTheme, webContents} = require('electron')
 const path = require('path')
 const yas = require('youtube-audio-server')
