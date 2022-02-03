@@ -8,3 +8,8 @@
   @media (prefers-color-scheme: light) {
     body { background: #ddd; color: black; }
   }
+  .Themes{
+position:absolute;
+height: 40vmin;
+top:50%
+  }
