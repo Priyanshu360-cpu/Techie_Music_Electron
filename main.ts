@@ -22,7 +22,7 @@ function createWindow () {
 
   ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
-      nativeTheme.themeSource = 'light'
+      nativeTheme.themeSource = 'light' 
     } else {
       nativeTheme.themeSource = 'dark'
     }
