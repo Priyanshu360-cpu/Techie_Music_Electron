@@ -30,6 +30,7 @@
     "sound-play": "^1.1.0",
     "youtube-audio-server": "^2.8.2",
     "youtube-mp3-converter": "^1.0.3",
-    "youtube.ts": "^0.2.5"
+    "youtube.ts": "^0.2.5",
+    "ytdl-core": "^4.10.1"
   }
 }
