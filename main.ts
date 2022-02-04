@@ -19,7 +19,9 @@ function createWindow () {
   })
 
   win.loadFile('index.html')
-
+  
+    
+ 
   ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
       nativeTheme.themeSource = 'light' 
@@ -47,8 +49,17 @@ ipcMain.handle('download', (event,x) => {
       console.error(`Sorry, an error ocurred when trying to download ${id}`, error)
     })
     .download({ id, file})
+    event.returnValue = 'Main said I received your Sync message';
 })
+ipcMain.on('asyncChannelToMain', (event, arg) => {
+  console.log(arg + ' from renderer')
+  if (arg === 'hello') {
+    event.sender.send('asyncChannelToRenderer', 'world')
+  }
+})
+
 app.whenReady().then(async () => {
+  
   createWindow()
   sound.play(path.join(__dirname, './some/folder/techiehi.mp3'));
   
