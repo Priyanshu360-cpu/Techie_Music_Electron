@@ -22,5 +22,8 @@ webview.addEventListener('dom-ready', () => {
    
     let d = document.getElementById('test').value;
     
-    await window.darkMode.download(d) })
+    let e = await window.darkMode.download(d) 
+   
+
+  console.log(e)})
     
