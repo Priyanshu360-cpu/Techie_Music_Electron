@@ -7,6 +7,22 @@ const { app, BrowserWindow, ipcMain, nativeTheme, webContents} = require('electr
 const path = require('path')
 const yas = require('youtube-audio-server')
 const axios = require("axios")
+const { exec } = require('child_process')
+const execPromise = require('util').promisify(exec)
+const addPresentationCore = `Add-Type -AssemblyName presentationCore;`
+const createMediaPlayer = `$player = New-Object system.windows.media.mediaplayer;`
+const loadAudioFile = path => `$player.open('${path}');`
+const playAudio = `$player.Play();`
+const stopAudio = `Start-Sleep 1; Start-Sleep -s $player.NaturalDuration.TimeSpan.TotalSeconds;Exit;`
+const pclose = `Exit;`
+const WindowsStop = (path) => `powershell -c ${loadAudioFile(
+  path,
+)}; ${pclose}`
+const macPlayCommand = (path, volume) => `afplay \"${path}\" -v ${volume}`
+const windowPlayCommand = (path, volume) =>
+  `powershell -c ${addPresentationCore} ${createMediaPlayer} ${loadAudioFile(
+    path,
+  )} $player.Volume = ${volume}; ${playAudio} ${stopAudio}`
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -35,7 +51,24 @@ function createWindow () {
     nativeTheme.themeSource = 'system'
   })
 }
+async function pclosed(){
+  try{
+    await execPromise(WindowsStop(path.join(__dirname, './some/folder/youtube-audio.mp3')),{windowsHide: true})
+  } catch(err){
+    throw err;
+  }
+}
+async function play (path, volume){
+  const volumeAdjustedByOS = process.platform === 'darwin' ? Math.min(2, volume * 2) : volume
 
+  const playCommand =
+    process.platform === 'darwin' ? macPlayCommand(path, volumeAdjustedByOS) : windowPlayCommand(path, volumeAdjustedByOS)
+  try {
+    await execPromise(playCommand, {windowsHide: true})
+  } catch (err) {
+    throw err
+  }
+}
 async function setActivity(largeimage,largetext,detail) {
   const startTimestamp = new Date();
   Discord.rpc.setActivity({
@@ -61,14 +94,14 @@ ipcMain.handle('download', async (event,x) => {
             } catch (e) {
                 return console.log(`An error occured!`)
             }
-            setActivity(data.items[0].snippet.thumbnails.high.url,data.items[0].snippet.title,data.items[0].snippet.channelTitle);
             const id = data.items[0].id.videoId;
             const file = 'whole-lotta-love.mp3'
             console.log(`Downloading ${id} into ${file}...`)
             yas.downloader
               .setFolder('some/folder') 
               .onSuccess(({id, file}) => {
-                sound.play(path.join(__dirname, './some/folder/youtube-audio.mp3'));
+                
+                play(path.join(__dirname, './some/folder/youtube-audio.mp3'),1);
                 console.log(`Yay! Audio (${id}) downloaded successfully into "${file}"!`)
               })
               .onError(({ id, file, error }) => {
@@ -76,14 +109,14 @@ ipcMain.handle('download', async (event,x) => {
               })
               .download({ id, file})
               event.returnValue = 'Main said I received your Sync message';
-  
+              setActivity(data.items[0].snippet.thumbnails.high.url,data.items[0].snippet.title,data.items[0].snippet.channelTitle);
+
 })
 
 app.whenReady().then(async () => {
-  
+  play(path.join(__dirname, './some/folder/techiehi.mp3'),1)
   createWindow()
-  sound.play(path.join(__dirname, './some/folder/techiehi.mp3'));
-  
+
   const contents = webContents.getAllWebContents()[0]
   app.on('activate', () => {
     
@@ -98,6 +131,7 @@ app.whenReady().then(async () => {
 })
 
 app.on('window-all-closed', () => {
+  pclosed()
   const fs = require('fs')
   const dir = path.join(__dirname, './some/folder/youtube-audio.mp3');
   try {
