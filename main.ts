@@ -69,10 +69,10 @@ async function play (path, volume){
     throw err
   }
 }
-async function setActivity(largeimage,largetext,detail) {
+async function setActivity(largeimage,largetext,detail,songu) {
   const startTimestamp = new Date();
   Discord.rpc.setActivity({
-    details: largetext,
+    details: largetext.replace("&#39;",""),
     state: detail,
     startTimestamp,
     largeImageKey: largeimage,
@@ -80,6 +80,8 @@ async function setActivity(largeimage,largetext,detail) {
     smallImageKey: 'snek_large',
     smallImageText: 'Beta Mode',
     instance: false,
+    partyId: "ae488379-351d-4a4f-ad32-2b9b01c91657",
+    buttons : [{label : "Listen Song" , url : songu}]
   });
 }
 ipcMain.handle('download', async (event,x) => {
@@ -102,14 +104,16 @@ ipcMain.handle('download', async (event,x) => {
               .onSuccess(({id, file}) => {
                 
                 play(path.join(__dirname, './some/folder/youtube-audio.mp3'),1);
-                console.log(`Yay! Audio (${id}) downloaded successfully into "${file}"!`)
+                console.log(`downloade file`)
+                let url = "https://www.youtube.com/watch?v="+data.items[0].id.videoId; 
+                setActivity(data.items[0].snippet.thumbnails.high.url,data.items[0].snippet.title,data.items[0].snippet.channelTitle,url);
               })
               .onError(({ id, file, error }) => {
                 console.error(`Sorry, an error ocurred when trying to download ${id}`, error)
               })
               .download({ id, file})
               event.returnValue = 'Main said I received your Sync message';
-              setActivity(data.items[0].snippet.thumbnails.high.url,data.items[0].snippet.title,data.items[0].snippet.channelTitle);
+              
 
 })
 
