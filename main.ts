@@ -34,7 +34,7 @@ function createWindow () {
     }
   })
 
-  win.loadFile('index.html')
+  win.loadURL('http://localhost:3000');
   
     
  

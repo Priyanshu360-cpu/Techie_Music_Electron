@@ -3,8 +3,6 @@ const DiscordRPC = require('discord-rpc');
 DiscordRPC.register(clientId);
 const path = require('path');
 const url = require('url');
-
-
 const rpc = new DiscordRPC.Client({ transport: 'ipc' });
 const startTimestamp = new Date();
 
@@ -28,6 +26,6 @@ rpc.on('ready', () => {
   console.log("ready");
     setActivity();
 });
-
+ 
 rpc.login({ clientId }).catch(console.error);
 module.exports.rpc=rpc;

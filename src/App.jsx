@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Techie Music</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" type="text/css" href="./styles.css">
-</head>
-<body>
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <body>
    
     <h1>Main Window</h1>
    <themes>Test</themes>
@@ -22,5 +19,7 @@
     <webview src="https://www.github.com/" plugins></webview>
     <script src="renderer.js"></script>
   </body>
-</body>
-</html>
+  );
+}
+
+export default App;
