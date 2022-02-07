@@ -10,8 +10,6 @@ class App extends Component{
     isPlaying: false,
   };
   playPause = () => {
-
-    // Get state of song
     let isPlaying = this.state.isPlaying;
 
     if (isPlaying) {
