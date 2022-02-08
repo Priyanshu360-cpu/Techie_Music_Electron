@@ -136,14 +136,7 @@ app.whenReady().then(async () => {
 
 app.on('window-all-closed', () => {
   pclosed()
-  const fs = require('fs')
-  const dir = path.join(__dirname, './some/folder/youtube-audio.mp3');
-  try {
-    fs.unlinkSync(dir);
-    
-  } catch (err) {
-    console.error(err);
-  }
+
   if (process.platform !== 'darwin') {
     app.quit()
   }
