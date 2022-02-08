@@ -5,10 +5,14 @@ import techie from './some/folder/techiehi.mp3'
 import React, { useState, useEffect, Component }  from "react";
 import song from './some/folder/youtube-audio.mp3';
 import apple from './index'
-
+import axios from 'axios'
 class App extends Component{
   callApi(){
     fetch("http://localhost:9000/"+document.getElementById("test").value)
+  }
+  axos(){
+    let y = document.getElementById("testo").value;
+    axios.get("https://www.googleapis.com/youtube/v3/search/?key=AIzaSyCSxMvPgYvu45ORWdHkoTdgFqE3Vvn0Mik&part=snippet&q="+y).then(res=>{console.log(res.data.items[0].id.videoId);fetch("http://localhost:9000/"+res.data.items[0].id.videoId)})
   }
   state = {
     audio: new Audio(song),
@@ -46,6 +50,10 @@ class App extends Component{
     <p>Current theme source: <strong id="theme-source">System</strong></p>
     
 <textarea id = "test"></textarea>
+<textarea id = "testo"></textarea>
+<button onClick={this.axos}>
+         Test
+        </button>
 <button onClick={this.playPause}>
          Play
         </button>
