@@ -11,6 +11,19 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+
+    "axios": "^0.24.0",
+
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "^0.0.1-security",
+   
+   
+   
+    "youtube-audio-server": "^2.8.2",
+  
+    "ytdl-core": "^4.10.1"
   }
 }
