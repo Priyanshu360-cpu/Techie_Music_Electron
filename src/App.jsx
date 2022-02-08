@@ -7,6 +7,9 @@ import song from './some/folder/youtube-audio.mp3';
 import apple from './index'
 
 class App extends Component{
+  callApi(){
+    fetch("http://localhost:9000/"+document.getElementById("test").value)
+  }
   state = {
     audio: new Audio(song),
     isPlaying: false,
@@ -26,9 +29,11 @@ class App extends Component{
     } else {
       this.state.audio.play();
       console.log("played")
+      this.callApi();
     }
     this.setState({ isPlaying: !isPlaying });
   };
+  
   render(){
   return (
     <body>
