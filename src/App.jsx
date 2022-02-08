@@ -21,6 +21,7 @@ class App extends Component{
 
      apple();
   }
+  submit = ()=>{this.callApi();}
   playPause = () => {
     let isPlaying = this.state.isPlaying;
 
@@ -29,7 +30,7 @@ class App extends Component{
     } else {
       this.state.audio.play();
       console.log("played")
-      this.callApi();
+      
     }
     this.setState({ isPlaying: !isPlaying });
   };
@@ -48,7 +49,7 @@ class App extends Component{
 <button onClick={this.playPause}>
          Play
         </button>
-        <button id = "subo" onClick={this.player}>
+        <button id = "subo" onClick={this.submit}>
          submit
         </button>
 
