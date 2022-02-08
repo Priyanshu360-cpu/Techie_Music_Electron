@@ -3,12 +3,21 @@ import './App.css';
 import blank from './images/nomusic.jpg'
 import techie from './some/folder/techiehi.mp3'
 import React, { useState, useEffect, Component }  from "react";
+import song from './some/folder/youtube-audio.mp3';
+import apple from './index'
 
 class App extends Component{
   state = {
-    audio: new Audio(techie),
+    audio: new Audio(song),
     isPlaying: false,
   };
+  player = () =>{
+    let x = document.getElementById("test").value;
+    let y = x.replace(' ','+');
+    
+
+     apple();
+  }
   playPause = () => {
     let isPlaying = this.state.isPlaying;
 
@@ -33,6 +42,9 @@ class App extends Component{
 <textarea id = "test"></textarea>
 <button onClick={this.playPause}>
          Play
+        </button>
+        <button id = "subo" onClick={this.player}>
+         submit
         </button>
 
     <button id="toggle-dark-mode">Toggle Dark Mode</button>
