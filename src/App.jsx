@@ -19,7 +19,7 @@ class App extends Component{
   axos(){
     
     let y = document.getElementById("test").value;
-    axios.get("https://www.googleapis.com/youtube/v3/search/?key=AIzaSyCSxMvPgYvu45ORWdHkoTdgFqE3Vvn0Mik&part=snippet&q="+y).then(res=>{z=res.data.items[0].id.videoId;fetch("http://localhost:9000/"+res.data.items[0].id.videoId);console.log(res.data.items[0].snippet.thumbnails.high.url);App.setState({image: res.data.items[0].snippet.thumbnails.high.url})})
+    axios.get("https://www.googleapis.com/youtube/v3/search/?key=AIzaSyCSxMvPgYvu45ORWdHkoTdgFqE3Vvn0Mik&part=snippet&q="+y).then(res=>{z=res.data.items[0].id.videoId;fetch("http://localhost:9000/"+res.data.items[0].id.videoId);console.log(res.data.items[0].snippet.thumbnails.high.url);this.setState({image: res.data.items[0].snippet.thumbnails.high.url})})
   }
 
   player = () =>{
