@@ -6,21 +6,25 @@ import React, { useState, useEffect, Component }  from "react";
 import song from './some/folder/youtube-audio.mp3';
 import apple from './index'
 import axios from 'axios'
+
+let z;
 class App extends Component{
-  
-  axos(){
-    let y = document.getElementById("test").value;
-    axios.get("https://www.googleapis.com/youtube/v3/search/?key=AIzaSyCSxMvPgYvu45ORWdHkoTdgFqE3Vvn0Mik&part=snippet&q="+y).then(res=>{console.log(res.data.items[0].id.videoId);fetch("http://localhost:9000/"+res.data.items[0].id.videoId)})
-  }
+ 
   state = {
     audio: new Audio(song),
     isPlaying: false,
+    image: blank
   };
+ 
+  axos(){
+    
+    let y = document.getElementById("test").value;
+    axios.get("https://www.googleapis.com/youtube/v3/search/?key=AIzaSyCSxMvPgYvu45ORWdHkoTdgFqE3Vvn0Mik&part=snippet&q="+y).then(res=>{z=res.data.items[0].id.videoId;fetch("http://localhost:9000/"+res.data.items[0].id.videoId);console.log(res.data.items[0].snippet.thumbnails.high.url);App.setState({image: res.data.items[0].snippet.thumbnails.high.url})})
+  }
+
   player = () =>{
     let x = document.getElementById("test").value;
     let y = x.replace(' ','+');
-    
-
      apple();
   }
   
@@ -31,7 +35,7 @@ class App extends Component{
       this.state.audio.pause();
     } else {
       this.state.audio.play();
-      console.log("played")
+      console.log(z)
       
     }
     this.setState({ isPlaying: !isPlaying });
@@ -43,7 +47,7 @@ class App extends Component{
     <h1>Main Window</h1>
    <themes>Test</themes>
     <div id="title">Title</div>
-    <img src={blank}></img>
+    <img className ="thumb" src={this.state.image}></img>
     <div id="album">Album</div>
     <p>Current theme source: <strong id="theme-source">System</strong></p>
     
