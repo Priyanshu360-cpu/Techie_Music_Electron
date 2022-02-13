@@ -1,5 +1,6 @@
 {
   "name": "techie_music_electron",
+  "presence":clientid,
   "version": "0.1.0",
   "main": "main.ts",
   "private": true,
