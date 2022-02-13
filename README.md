@@ -29,6 +29,7 @@ npm run electron
 ```
 
 **Add client id in package.json**
+
 To see how to do this Visit [Here](https://discord.com/developers/docs/topics/oauth2)
 # Support for Discord
 
