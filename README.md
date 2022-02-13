@@ -36,4 +36,4 @@ The player uses yt to download Songs only
 
 Music is played with Htmls music attribute.
 
-**Drop a Star if you liked the project**
+**Drop a ⭐ if you liked the project**
