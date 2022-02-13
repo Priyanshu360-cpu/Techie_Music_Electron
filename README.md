@@ -7,6 +7,28 @@ Reactjs for Frontend
 Electron for making it available for discord
 Express for the backend part
 ```
+# Setup
+
+**Running Reactjs**
+
+```
+npm start
+```
+
+**Running Express Server**
+
+```
+cd/api
+npm start
+```
+
+**Running Electron**
+
+```
+npm run electron
+```
+
+# Details
 
 The player has support for Discord Presence and uses discordjs to provide support for the same.
 
