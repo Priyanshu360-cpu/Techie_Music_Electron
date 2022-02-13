@@ -1,4 +1,4 @@
-const clientId = '938822371207438476';
+const clientId = 'presence';
 const DiscordRPC = require('discord-rpc');
 DiscordRPC.register(clientId);
 const path = require('path');
