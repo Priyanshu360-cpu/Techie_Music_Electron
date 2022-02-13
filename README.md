@@ -28,6 +28,10 @@ npm start
 npm run electron
 ```
 
+# Support for Discord
+
+![image](https://user-images.githubusercontent.com/79325092/153768631-cd1f28b8-3dfe-4e5d-9e2b-e18988a03998.png)
+
 # Details
 
 The player has support for Discord Presence and uses discordjs to provide support for the same.
