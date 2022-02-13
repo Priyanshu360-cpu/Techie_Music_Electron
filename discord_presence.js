@@ -1,4 +1,4 @@
-const clientId = 'presence';
+const clientId = require('./package.json').presence;
 const DiscordRPC = require('discord-rpc');
 DiscordRPC.register(clientId);
 const path = require('path');
